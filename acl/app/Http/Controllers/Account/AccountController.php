@@ -21,9 +21,9 @@ class AccountController extends Controller
 
         // list users
 
-        $sub_users = User::where('parent_id', Auth::user()->id)->get();
+        $sub_users = User::where('parent_id', Auth::user()->id)->orWhere('id', Auth::user()->id)->get();
 
-        return view('account', ['users' => $sub_users] );
+        return view('account', ['users' => $sub_users]);
 
     }
 
